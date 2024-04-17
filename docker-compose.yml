@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    container_name: db_postgres_dk
+    restart: always
+    environment:
+      POSTGRES_DB: 'sorelle'
+      POSTGRES_USER: 'masteruser'
+      POSTGRES_PASSWORD: 'sorelleFLorencia1234@'
+      TZ: 'UTC'
+    ports:
+      - '5433:5432'
+    expose:
+      - '5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
