@@ -7,7 +7,7 @@ from django.urls import reverse
 
 class UserViewTest(TestCase):
 
-    def setUpTestData(self):
+    def setUp(self):
         number_of_users = 15
         for user_num in range(number_of_users):
             User.objects.create(
@@ -19,4 +19,5 @@ class UserViewTest(TestCase):
             )
     def test_view_url_exists_at_desired_location(self):
         resp = self.client.get('/api/users/')
+        print("RESPONSE:", resp)
         self.assertEqual(resp.status_code, 200)
