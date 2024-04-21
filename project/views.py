@@ -12,6 +12,7 @@ class UserView(APIView):
     "Class articulo to call apia and his methods"
 
     def get_object(self, pk):
+        #TODO : revisar
         "Get only one user"
         try:
             return User.objects.get(pk=pk)
