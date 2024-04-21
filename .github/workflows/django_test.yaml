@@ -36,6 +36,7 @@ jobs:
 
     - name: Migrations
       run: |
+        docker ps
         export DB_USER=${{ secrets.DB_USER }}
         export DB_NAME=${{ secrets.DB_NAME }}
         export DB_PASS=${{ secrets.DB_PASS }}
