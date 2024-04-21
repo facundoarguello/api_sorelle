@@ -12,7 +12,6 @@ jobs:
     services:
       db_postgres_dk:
         image: postgres:latest
-        container_name: db_postgres_dk
         env:
           POSTGRES_USER: ${{ secrets.DB_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
@@ -37,13 +36,14 @@ jobs:
 
     - name: Migrations
       run: |
+        export DB_USER=${{ secrets.DB_USER }}
+        export DB_NAME=${{ secrets.DB_NAME }}
+        export DB_PASS=${{ secrets.DB_PASS }}
+        export DB_PORT=${{ secrets.DB_PORT }}
         python3 manage.py makemigrations 
         python3 manage.py migrate
         
     - name: Run tests
       run: |
-        export DB_USER=${{ secrets.DB_USER }}
-        export DB_NAME=${{ secrets.DB_NAME }}
-        export DB_PASS=${{ secrets.DB_PASS }}
-        export DB_PORT=${{ secrets.DB_PORT }}
+        
         python manage.py test
