@@ -6,9 +6,11 @@ jobs:
   test:
     name: Run Django tests
     runs-on: ubuntu-latest
+    environment: 
+      name: sorelle
 
     services:
-      db:
+      db_postgres_dk:
         image: postgres:latest
         env:
           POSTGRES_USER: ${{ secrets.DB_USER }}
@@ -34,9 +36,19 @@ jobs:
 
     - name: Migrations
       run: |
+        export DB_USER=${{ secrets.DB_USER }}
+        export DB_NAME=${{ secrets.DB_NAME }}
+        export DB_PASS=${{ secrets.DB_PASS }}
+        export DB_PORT=${{ secrets.DB_PORT }}
+        export DB_HOST=localhost
         python3 manage.py makemigrations 
         python3 manage.py migrate
         
     - name: Run tests
       run: |
+        export DB_USER=${{ secrets.DB_USER }}
+        export DB_NAME=${{ secrets.DB_NAME }}
+        export DB_PASS=${{ secrets.DB_PASS }}
+        export DB_PORT=${{ secrets.DB_PORT }}
+        export DB_HOST=localhost
         python manage.py test
