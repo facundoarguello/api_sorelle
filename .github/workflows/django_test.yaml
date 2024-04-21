@@ -10,7 +10,7 @@ jobs:
       name: sorelle
 
     services:
-      db:
+      db_postgres_dk:
         image: postgres:latest
         env:
           POSTGRES_USER: ${{ secrets.DB_USER }}
