@@ -15,12 +15,7 @@ USER_STATUS = (
    
 )
 
-SERVICES_STATUS = (
-    ('active','Active'),
-    ('delete','Delete'),
-    ('stoped','Stoped'),
-   
-)
+
 
 class User(models.Model):
     firstname = models.CharField(max_length=255, null=False)
@@ -33,26 +28,4 @@ class User(models.Model):
     password = models.CharField(_('password'), max_length=128)
     status = models.CharField(max_length=10, choices=USER_STATUS, default='active')
 
-class Service(models.Model):
-    name = models.CharField(max_length=255, null=False)
-    datecreate = models.DateField(auto_now=True)
-    status = models.CharField(max_length=10, choices=USER_STATUS, default='active')
-    description = models.CharField(max_length=555, null=False)
-    price = models.FloatField()
-class Reservation(models.Model):
-    client = models.ForeignKey(
-        User,
-        related_name='user',
-        on_delete=models.CASCADE
-    )
-    professional = models.ForeignKey(
-        User,
-        related_name='profesional',
-        on_delete=models.CASCADE
-    )
-    service =models.ManyToManyField(
-        Service,
-        verbose_name='servicios',
-    )
-    date = models.DateField()
-    datecreate = models.DateField(auto_now=True)
+

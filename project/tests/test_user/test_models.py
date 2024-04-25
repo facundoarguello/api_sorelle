@@ -1,6 +1,6 @@
 "Testing"
 from django.test import TestCase
-from project.models import User
+from ...models.models_user import User
 
 # Create your tests here.
 

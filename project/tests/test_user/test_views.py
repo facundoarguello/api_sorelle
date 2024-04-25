@@ -3,7 +3,7 @@ import random
 import json
 # Create your tests here.
 
-from project.models import User
+from ...models.models_user import User
 from django.urls import reverse
 
 class UserViewTest(TestCase):
