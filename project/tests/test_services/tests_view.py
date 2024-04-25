@@ -35,7 +35,7 @@ class ServiceViewTest(TestCase):
             "description": "descripcion de servicio en testeo",
             "price": 12000
         }
-        resp = self.client.post(reverse("service_list"),data_send)
+        resp = self.client.post(reverse("services_list"),data_send)
         self.assertEqual(resp.status_code, 201)
         data_json = resp.json()['data']
         self.assertEqual(data_json['price'], 12000)
