@@ -9,6 +9,7 @@ from django.urls import reverse
 class UserViewTest(TestCase):
 
     def setUp(self):
+        
         number_of_users = 15
         for user_num in range(number_of_users):
             User.objects.create(
