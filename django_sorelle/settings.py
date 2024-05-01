@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'project',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken'
     
 ]
 
