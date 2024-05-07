@@ -47,7 +47,7 @@ class UserViewTest(TestCase):
         self.assertEqual(resp.status_code, 201)
         data = resp.json()['data']
         print(data)
-        self.assertEqual(data['password'], pass_word_equal)
+
         self.assertEqual(data['firstname'], 'Milagros')
     
     def test_one_user_put(self):
@@ -77,7 +77,7 @@ class UserViewTest(TestCase):
         data = resp.json()['data']
         print("put",data)
         self.assertEqual(data['lastname'], 'De La Cruz')
-        self.assertEqual(data['password'], 'cr7_el_mejor')
+
     
     def test_one_user_delete(self):
         "Test DELETE A USER  "

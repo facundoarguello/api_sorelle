@@ -6,7 +6,6 @@ from ..serializers.serializers_user import UserSerializers
 from ..models.models_user import User
 from ..pagination import MyCustomPagination
 
-
 # Create your views here.
 
 class UserView(APIView):
@@ -45,12 +44,13 @@ class UserView(APIView):
         "Insert one or many users"
         users_request = request.data
         json_response = {}
-        
-        serializer_user = UserSerializers(data=users_request)
+        if isinstance(users_request, list):
+            serializer_user = UserSerializers(data=users_request, many=True)
+        else:
+            serializer_user = UserSerializers(data=users_request)
 
         if serializer_user.is_valid():
             serializer_user.save()
-
             json_response['message'] = 'Succesfully'
             json_response['data'] = serializer_user.data
             return Response(json_response, status=status.HTTP_201_CREATED)
